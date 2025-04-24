@@ -16,6 +16,7 @@ public class Equipamento {
     @Id
     private long id;
     private long codigo_equip;
+
     private String nome_equip;
     private String marca_equip;
     private String descricao;
@@ -23,6 +24,7 @@ public class Equipamento {
     private String imagem;
     private String numero_serie;
     private String modelo;
+
     private LocalDateTime tempo_manutencao;
 
     
@@ -130,7 +132,4 @@ public class Equipamento {
     public void setEmpresa(Mdo empresa) {
         this.empresa = empresa;
     }
-
-
-
 }

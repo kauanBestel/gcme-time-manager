@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ import br.com.gcme.gcme.services.MdoService;
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
-@RequestMapping(name = "/mao-de-obra")
+@RequestMapping("/mao-de-obra")
 public class MdoController {
     
 private MdoService mdoService;
@@ -40,7 +41,7 @@ private MdoService mdoService;
     }
 
     @DeleteMapping("{id}")
-    List<Mdo> delete(@RequestBody long id){
+    List<Mdo> delete(@PathVariable long id){
         return mdoService.delete(id);
     }
 }

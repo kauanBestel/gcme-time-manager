@@ -1,3 +1,5 @@
+package br.com.gcme.gcme.entity;
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
