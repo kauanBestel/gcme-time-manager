@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## conexão com o banco
+/src/main/resources/application.properties
+
