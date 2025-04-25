@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ## conexão com o banco
-/src/main/resources/application.properties
+src/main/resources/application.properties
 

@@ -1,4 +1,4 @@
-package br.com.gcme.gcme.controllers;
+package br.com.gcme.gcme.controller;
 
 import java.util.List;
 
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gcme.gcme.entity.Mdo;
 import br.com.gcme.gcme.services.MdoService;
+import br.com.gcme.gcme.dto.MdoRequest;
+
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
@@ -26,20 +28,25 @@ private MdoService mdoService;
         this.mdoService = mdoService;
     }
 
-    @PostMapping
-    List<Mdo> create(@RequestBody Mdo mdo){
-        return mdoService.create(mdo);
-    }
-
+    //GET
     @GetMapping
     List<Mdo> list(){
      return mdoService.list();
     }
+
+    //POST
+    @PostMapping
+    List<Mdo> create(@RequestBody MdoRequest mdoRequest){
+        return mdoService.create(mdoRequest);
+    }
+    
+    //UPDATE
     @PutMapping
-    List<Mdo> update(@RequestBody Mdo mdo){
-        return mdoService.update(mdo);
+    List<Mdo> update(@RequestBody MdoRequest mdoRequest){
+        return mdoService.update(mdoRequest);
     }
 
+    //DELETE
     @DeleteMapping("{id}")
     List<Mdo> delete(@PathVariable long id){
         return mdoService.delete(id);
