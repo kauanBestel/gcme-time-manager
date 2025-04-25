@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.gcme.gcme.dto.MdoRequest;
 import br.com.gcme.gcme.entity.Mdo;

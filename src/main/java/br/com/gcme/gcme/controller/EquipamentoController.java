@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.gcme.gcme.dto.EquipamentoRequest;
 import br.com.gcme.gcme.entity.Equipamento;
 import br.com.gcme.gcme.services.EquipamentoService;
 
@@ -25,20 +26,21 @@ private EquipamentoService equipamentoService;
 public EquipamentoController(EquipamentoService equipamentoService){
     this.equipamentoService = equipamentoService;
 }
-    @PostMapping
-    List<Equipamento> create(@RequestBody Equipamento equipamento) {
-        return equipamentoService.create(equipamento);
-    }
 
     @GetMapping
     List<Equipamento> list(){
         return equipamentoService.list();
     }
 
+    @PostMapping
+    List<Equipamento> create(@RequestBody EquipamentoRequest equipamentoRequest) {
+        return equipamentoService.create(equipamentoRequest);
+    }
+
     @PutMapping
-    List<Equipamento> update(@RequestBody Equipamento equipamento)
+    List<Equipamento> update(@RequestBody EquipamentoRequest equipamentoeRequest)
     {
-        return equipamentoService.update(equipamento);
+        return equipamentoService.update(equipamentoeRequest);
     }
 
     @DeleteMapping("{id}")
