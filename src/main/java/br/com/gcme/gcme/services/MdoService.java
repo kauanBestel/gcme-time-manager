@@ -33,14 +33,14 @@ public class MdoService {
     //CRIAR
     public List<Mdo> create(MdoRequest mdorequest)
     {
-        Mdo mdo = mdoMapper.map(mdorequest);
+        Mdo mdo = mdoMapper.toEntity(mdorequest);
         mdoRepository.save(mdo);
         return list();
     }
 
     //ATUALIZAR
     public List<Mdo> update(MdoRequest mdoRequest){
-        Mdo mdo = mdoMapper.map(mdoRequest);
+        Mdo mdo = mdoMapper.toEntity(mdoRequest);
         mdoRepository.save(mdo);
         return list();
     }

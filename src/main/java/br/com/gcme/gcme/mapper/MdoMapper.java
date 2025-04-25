@@ -3,6 +3,7 @@ package br.com.gcme.gcme.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import br.com.gcme.gcme.dto.MdoRequest;
@@ -13,6 +14,7 @@ import br.com.gcme.gcme.entity.Mdo;
 public interface MdoMapper {
 
     // de DTO de entrada (POST/PUT) para entity
+    @Mapping(target = "equipamentos", ignore = true )
     Mdo toEntity(MdoRequest mdorequest);
 
 

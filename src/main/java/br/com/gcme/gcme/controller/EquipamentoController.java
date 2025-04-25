@@ -1,4 +1,4 @@
-package br.com.gcme.gcme.controllers;
+package br.com.gcme.gcme.controller;
 
 import java.util.List;
 
