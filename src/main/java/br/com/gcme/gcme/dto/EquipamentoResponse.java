@@ -7,14 +7,32 @@ public class EquipamentoResponse {
     private long id;
     private long codigo_equip;
     private String nome_equip;
-    private String marca_equip;
+    private String marca_equip; 
     private String descricao;
     private String range_tipo;
     private String imagem;
     private String numero_serie;
     private String modelo;
-
     private LocalDateTime tempo_manutencao;
+
+    private long empresaId;
+    private String nomeEmpresa;
+
+    public long getEmpresaId() {
+        return empresaId;
+    }
+
+    public void setEmpresaId(long impresaId) {
+        this.empresaId = impresaId;
+    }
+
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
+    }
+
+    public void setNomeEmpresa(String nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
+    }
 
     public long getId() {
         return id;
@@ -95,5 +113,4 @@ public class EquipamentoResponse {
     public void setTempo_manutencao(LocalDateTime tempo_manutencao) {
         this.tempo_manutencao = tempo_manutencao;
     }
-
 }

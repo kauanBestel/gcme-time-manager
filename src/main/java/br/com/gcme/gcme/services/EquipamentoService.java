@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import br.com.gcme.gcme.dto.EquipamentoRequest;
 import br.com.gcme.gcme.entity.Equipamento;
 import br.com.gcme.gcme.mapper.EquipamentoMapper;
-import br.com.gcme.gcme.mapper.MdoMapper;
 import br.com.gcme.gcme.repository.EquipamentoRepository;
 
 @Service
