@@ -1,11 +1,9 @@
 package br.com.gcme.gcme.dto;
 
-import java.time.LocalDateTime;
-
 public class EquipamentoRequest {
     
-    private long id;
-    private long codigo_equip;
+    private Long id;
+    private Long codigo_equip;
     private String nome_equip;
     private String marca_equip;
     private String descricao;
@@ -14,7 +12,6 @@ public class EquipamentoRequest {
     private String numero_serie;
     private String modelo;
 
-    private LocalDateTime tempo_manutencao;
 
     public long getId() {
         return id;
@@ -88,13 +85,7 @@ public class EquipamentoRequest {
         this.modelo = modelo;
     }
 
-    public LocalDateTime getTempo_manutencao() {
-        return tempo_manutencao;
-    }
-
-    public void setTempo_manutencao(LocalDateTime tempo_manutencao) {
-        this.tempo_manutencao = tempo_manutencao;
-    }
+   
 
 
 }

@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public class EquipamentoResponse {
     
-    private long id;
-    private long codigo_equip;
+    private Long id;
+    private Long codigo_equip;
     private String nome_equip;
     private String marca_equip; 
     private String descricao;
@@ -22,8 +22,8 @@ public class EquipamentoResponse {
         return empresaId;
     }
 
-    public void setEmpresaId(long impresaId) {
-        this.empresaId = impresaId;
+    public void setEmpresaId(long empresaId) {
+        this.empresaId = empresaId;
     }
 
     public String getNomeEmpresa() {

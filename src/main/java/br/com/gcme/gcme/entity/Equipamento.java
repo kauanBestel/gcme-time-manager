@@ -2,8 +2,10 @@ package br.com.gcme.gcme.entity;
 
 import java.time.LocalDateTime;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -14,10 +16,11 @@ import jakarta.persistence.Table;
 @Table(name = "equipamentos")
 public class Equipamento {
     @Id
-    private long id;
-    private long codigo_equip;
-
-    private String nome_equip;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long codigo_equip;
+@Column(name = "nome_equip")
+private String nomeEquip;
     private String marca_equip;
     private String descricao;
     private String range_tipo;
@@ -26,6 +29,7 @@ public class Equipamento {
     private String modelo;
 
     private LocalDateTime tempo_manutencao;
+    private LocalDateTime tempo;
 
     @ManyToOne
     @JoinColumn(name = "mdo_manutencao_id")
@@ -40,7 +44,7 @@ public class Equipamento {
             Mdo empresa) {
         this.id = id;
         this.codigo_equip = codigo_equip;
-        this.nome_equip = nome_equip;
+        this.nomeEquip = nome_equip;
         this.marca_equip = marca_equip;
         this.descricao = descricao;
         this.range_tipo = range_tipo;
@@ -52,6 +56,22 @@ public class Equipamento {
     }
     
     
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCodigo_equip(Long codigo_equip) {
+        this.codigo_equip = codigo_equip;
+    }
+
+    public LocalDateTime getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(LocalDateTime tempo) {
+        this.tempo = tempo;
+    }
 
     public long getId() {
         return id;
@@ -68,10 +88,10 @@ public class Equipamento {
     }
 
     public String getNome_equip() {
-        return nome_equip;
+        return nomeEquip;
     }
     public void setNome_equip(String nome_equip) {
-        this.nome_equip = nome_equip;
+        this.nomeEquip = nome_equip;
     }
 
     public String getMarca_equip() {
