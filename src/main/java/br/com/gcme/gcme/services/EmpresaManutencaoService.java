@@ -22,19 +22,16 @@ public class EmpresaManutencaoService {
         return empresaManutencaoRepository.findAll(sort);
     }
 
-    public List<EmpresaManutencao> create(EmpresaManutencao empresaManutencao){
-        empresaManutencaoRepository.save(empresaManutencao);
-        return getAll();
+    public EmpresaManutencao create(EmpresaManutencao empresa){
+       return empresaManutencaoRepository.save(empresa);
     }
 
-    public List<EmpresaManutencao> update(EmpresaManutencao empresaManutencao){
-        empresaManutencaoRepository.save(empresaManutencao);
-        return getAll();
+    public EmpresaManutencao update(EmpresaManutencao empresa){
+       return empresaManutencaoRepository.save(empresa);
     }
 
-    public List<EmpresaManutencao> delete(Long id){
+    public void delete(Long id){
         empresaManutencaoRepository.deleteById(id);
-        return getAll();
     }
 
     

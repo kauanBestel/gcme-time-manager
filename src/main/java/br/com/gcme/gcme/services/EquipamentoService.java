@@ -22,19 +22,16 @@ public class EquipamentoService {
         return equipamentoRepository.findAll(sort);
     }
 
-    public List<Equipamento> create(Equipamento equipamento){
-        equipamentoRepository.save(equipamento);
-        return getAll();
+    public Equipamento create(Equipamento equipamento){
+       return equipamentoRepository.save(equipamento);
     }
 
-    public List<Equipamento> update(Equipamento equipamento){
-        equipamentoRepository.save(equipamento);
-        return getAll();
+    public Equipamento update(Equipamento equipamento){
+       return equipamentoRepository.save(equipamento);
     }
 
     public List<Equipamento> delete(Long id){
         equipamentoRepository.deleteById(id);
         return getAll();
     }
-
 }

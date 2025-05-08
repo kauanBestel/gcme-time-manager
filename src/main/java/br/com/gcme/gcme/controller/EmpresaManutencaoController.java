@@ -2,6 +2,7 @@ package br.com.gcme.gcme.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gcme.gcme.entity.EmpresaManutencao;
 import br.com.gcme.gcme.services.EmpresaManutencaoService;
+import io.micrometer.core.ipc.http.HttpSender.Response;
 
 
 
@@ -36,19 +38,22 @@ private EmpresaManutencaoService empresaManutencaoService;
 
     //POST
     @PostMapping
-    List<EmpresaManutencao> create(@RequestBody EmpresaManutencao empresaManutencaoRequestDto){
-        return empresaManutencaoService.create(empresaManutencaoRequestDto);
+    public ResponseEntity<EmpresaManutencao> create(@RequestBody EmpresaManutencao empresa){
+        EmpresaManutencao criada = empresaManutencaoService.create(empresa);
+        return ResponseEntity.status(201).body(criada); //HTTP 201  CREATED
     }
     
     //UPDATE
     @PutMapping
-    List<EmpresaManutencao> update(@RequestBody EmpresaManutencao empresaManutencaoRequestDto){
-        return empresaManutencaoService.update(empresaManutencaoRequestDto);
+    public ResponseEntity<EmpresaManutencao> update(@RequestBody EmpresaManutencao empresa){
+        EmpresaManutencao atualizada = empresaManutencaoService.update(empresa);
+        return ResponseEntity.ok(atualizada);//HTTP 200 OK
     }
 
     //DELETE
     @DeleteMapping("{id}")
-    List<EmpresaManutencao> delete(@PathVariable long id){
-        return empresaManutencaoService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable long id){
+        empresaManutencaoService.delete(id);
+        return ResponseEntity.noContent().build(); //HTTP 204 no content
     }
 }

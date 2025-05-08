@@ -1,7 +1,9 @@
 package br.com.gcme.gcme.controller;
 
+import java.net.http.HttpResponse.ResponseInfo;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gcme.gcme.entity.Equipamento;
 import br.com.gcme.gcme.services.EquipamentoService;
+import io.micrometer.core.ipc.http.HttpSender.Response;
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
@@ -32,19 +35,22 @@ public EquipamentoController(EquipamentoService equipamentoService){
     }
 
     @PostMapping
-    List<Equipamento> create(@RequestBody Equipamento equipamento) {
-        return equipamentoService.create(equipamento);
+    public ResponseEntity<Equipamento> create(@RequestBody Equipamento equipamento) {
+        Equipamento criado = equipamentoService.create(equipamento);
+        return ResponseEntity.status(201).body(criado);
     }
 
     @PutMapping
-    List<Equipamento> update(@RequestBody Equipamento equipamento)
+    public ResponseEntity<Equipamento> update(@RequestBody Equipamento equipamento)
     {
-        return equipamentoService.update(equipamento);
+        Equipamento atualizado = equipamentoService.update(equipamento);
+        return ResponseEntity.ok(atualizado);
     }
 
     @DeleteMapping("{id}")
-    List<Equipamento> delete(@PathVariable Long id){
-        return equipamentoService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        equipamentoService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
