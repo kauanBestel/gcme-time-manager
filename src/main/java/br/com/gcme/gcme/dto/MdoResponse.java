@@ -2,6 +2,7 @@ package br.com.gcme.gcme.dto;
 
 public class MdoResponse {
     
+    private Long Id;
     private String nomeEmpresa;
     private String contatoNumero;
     private String contatoEmail;
@@ -30,6 +31,13 @@ public class MdoResponse {
     }
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+    public void setId(Long id) {
+        Id = id;
     }
 
 }

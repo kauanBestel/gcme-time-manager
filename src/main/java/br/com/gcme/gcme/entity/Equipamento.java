@@ -13,21 +13,20 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "equipamentos")
+@Table(name = "EQUIPAMENTOS")
 public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
     private Long codigo_equip;
-@Column(name = "nome_equip")
-private String nomeEquip;
+    private String nome_equip;
     private String marca_equip;
     private String descricao;
     private String range_tipo;
     private String imagem;
     private String numero_serie;
     private String modelo;
-
     private LocalDateTime tempo_manutencao;
     private LocalDateTime tempo;
 
@@ -44,7 +43,7 @@ private String nomeEquip;
             Mdo empresa) {
         this.id = id;
         this.codigo_equip = codigo_equip;
-        this.nomeEquip = nome_equip;
+        this.nome_equip = nome_equip;
         this.marca_equip = marca_equip;
         this.descricao = descricao;
         this.range_tipo = range_tipo;
@@ -88,10 +87,10 @@ private String nomeEquip;
     }
 
     public String getNome_equip() {
-        return nomeEquip;
+        return nome_equip;
     }
     public void setNome_equip(String nome_equip) {
-        this.nomeEquip = nome_equip;
+        this.nome_equip = nome_equip;
     }
 
     public String getMarca_equip() {

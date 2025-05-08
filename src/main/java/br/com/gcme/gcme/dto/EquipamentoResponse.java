@@ -15,8 +15,8 @@ public class EquipamentoResponse {
     private String modelo;
     private LocalDateTime tempo_manutencao;
 
-    private long empresaId;
-    private String nomeEmpresa;
+    private Long empresaId;      //retorna o id da empresa
+    private String nomeEmpresa;  //e tambem o seu nome
 
     public long getEmpresaId() {
         return empresaId;

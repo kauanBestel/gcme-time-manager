@@ -1,6 +1,7 @@
 package br.com.gcme.gcme.entity;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "mdo_manutencao")
+@Table(name = "EMPRESA_MANUTENCAO")
 
 public class Mdo {
 
@@ -18,25 +19,24 @@ public class Mdo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nomeEmpresa;
-    private String contatoNumero;
-    private String contatoEmail;
+    private String nome_empresa;
+    private String contato_numero;
+    private String contato_email;
     private String observacao;
 
     @OneToMany(mappedBy = "empresa")
-    private List<Equipamento> equipamentos;
+    private Set<Equipamento> equipamentos = new HashSet<>();
 
 
     public Mdo(){
-
     }
 
-    public Mdo(Long id, String nomeEmpresa, String contatoNumero, String contatoEmail, String observacao)
+    public Mdo(Long id, String nome_empresa, String contato_numero, String contato_email, String observacao)
     {
         this.id = id;
-        this.nomeEmpresa = nomeEmpresa;
-        this.contatoNumero = contatoNumero;
-        this.contatoEmail = contatoEmail;
+        this.nome_empresa = nome_empresa;
+        this.contato_numero = contato_numero;
+        this.contato_email = contato_email;
         this.observacao = observacao;
     }
     
@@ -50,26 +50,26 @@ public class Mdo {
 
 
     public String getNomeEmpresa() {
-        return nomeEmpresa;
+        return nome_empresa;
     }
     public void setNomeEmpresa(String nomeEmpresa) {
-        this.nomeEmpresa = nomeEmpresa;
+        this.nome_empresa = nomeEmpresa;
     }
 
 
     public String getContatoNumero() {
-        return contatoNumero;
+        return contato_numero;
     }
-    public void setContatoNumero(String contatoNumero) {
-        this.contatoNumero = contatoNumero;
+    public void setContatoNumero(String contato_numero) {
+        this.contato_numero = contato_numero;
     }
 
 
     public String getContatoEmail() {
-        return contatoEmail;
+        return contato_email;
     }
-    public void setContatoEmail(String contatoEmail) {
-        this.contatoEmail = contatoEmail;
+    public void setContatoEmail(String contato_email) {
+        this.contato_email = contato_email;
     }
 
 
@@ -80,16 +80,11 @@ public class Mdo {
         this.observacao = observacao;
     }
 
-
-    public List<Equipamento> getEquipamentos() {
+    public Set<Equipamento> getEquipamentos() {
         return equipamentos;
     }
 
-
-    public void setEquipamentos(List<Equipamento> equipamentos) {
+    public void setEquipamentos(Set<Equipamento> equipamentos) {
         this.equipamentos = equipamentos;
     }
-
-
-
 }

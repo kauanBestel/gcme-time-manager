@@ -2,19 +2,11 @@ package br.com.gcme.gcme.dto;
 
 public class MdoRequest {
     
-    private long id;
     private String nomeEmpresa;
     private String contatoNumero;
     private String contatoEmail;
     private String observacao;
 
-    
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
     public String getNomeEmpresa() {
         return nomeEmpresa;
     }

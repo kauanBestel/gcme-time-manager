@@ -22,7 +22,7 @@ public class EquipamentoService {
     }
  
     public List<Equipamento> list(){
-        Sort sort = Sort.by("nomeEquip");
+        Sort sort = Sort.by("nome_equip");
         return equipamentoRepository.findAll(sort);
     }
 
