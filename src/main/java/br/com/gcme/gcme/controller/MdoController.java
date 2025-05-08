@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.gcme.gcme.entity.Mdo;
+import br.com.gcme.gcme.entity.EmpresaManutencao;
 import br.com.gcme.gcme.services.MdoService;
-import br.com.gcme.gcme.dto.MdoRequest;
+import br.com.gcme.gcme.dto.EmpresaManutencaoRequest;
 
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
@@ -30,25 +30,25 @@ private MdoService mdoService;
 
     //GET
     @GetMapping
-    List<Mdo> list(){
+    List<EmpresaManutencao> list(){
      return mdoService.list();
     }
 
     //POST
     @PostMapping
-    List<Mdo> create(@RequestBody MdoRequest mdoRequest){
+    List<EmpresaManutencao> create(@RequestBody EmpresaManutencaoRequest mdoRequest){
         return mdoService.create(mdoRequest);
     }
     
     //UPDATE
     @PutMapping
-    List<Mdo> update(@RequestBody MdoRequest mdoRequest){
+    List<EmpresaManutencao> update(@RequestBody EmpresaManutencaoRequest mdoRequest){
         return mdoService.update(mdoRequest);
     }
 
     //DELETE
     @DeleteMapping("{id}")
-    List<Mdo> delete(@PathVariable long id){
+    List<EmpresaManutencao> delete(@PathVariable long id){
         return mdoService.delete(id);
     }
 }

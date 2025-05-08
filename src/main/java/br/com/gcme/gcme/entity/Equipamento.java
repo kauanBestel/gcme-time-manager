@@ -13,7 +13,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "EQUIPAMENTOS")
+@Table(name = "equipamentos")
 public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Equipamento {
 
     @ManyToOne
     @JoinColumn(name = "mdo_manutencao_id")
-    private Mdo empresa;
+    private EmpresaManutencao empresa;
     
     public Equipamento(){
         
@@ -40,7 +40,7 @@ public class Equipamento {
     
     public Equipamento(long id, long codigo_equip, String nome_equip, String marca_equip, String descricao,
             String range_tipo, String imagem, String numero_serie, String modelo, LocalDateTime tempo_manutencao,
-            Mdo empresa) {
+            EmpresaManutencao empresa) {
         this.id = id;
         this.codigo_equip = codigo_equip;
         this.nome_equip = nome_equip;
@@ -54,8 +54,6 @@ public class Equipamento {
         this.empresa = empresa;
     }
     
-    
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -146,10 +144,10 @@ public class Equipamento {
         this.tempo_manutencao = tempo_manutencao;
     }
 
-    public Mdo getEmpresa() {
+    public EmpresaManutencao getEmpresa() {
         return empresa;
     }
-    public void setEmpresa(Mdo empresa) {
+    public void setEmpresa(EmpresaManutencao empresa) {
         this.empresa = empresa;
     }
 }

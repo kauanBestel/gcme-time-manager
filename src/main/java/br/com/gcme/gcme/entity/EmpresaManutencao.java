@@ -11,9 +11,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "EMPRESA_MANUTENCAO")
+@Table(name = "empresa_manutencao")
 
-public class Mdo {
+public class EmpresaManutencao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +28,10 @@ public class Mdo {
     private Set<Equipamento> equipamentos = new HashSet<>();
 
 
-    public Mdo(){
+    public EmpresaManutencao(){
     }
 
-    public Mdo(Long id, String nome_empresa, String contato_numero, String contato_email, String observacao)
+    public EmpresaManutencao(Long id, String nome_empresa, String contato_numero, String contato_email, String observacao)
     {
         this.id = id;
         this.nome_empresa = nome_empresa;

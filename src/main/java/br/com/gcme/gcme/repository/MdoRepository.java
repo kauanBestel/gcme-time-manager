@@ -2,8 +2,8 @@ package br.com.gcme.gcme.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.gcme.gcme.entity.Mdo;
+import br.com.gcme.gcme.entity.EmpresaManutencao;
 
-public interface MdoRepository extends JpaRepository<Mdo, Long> {
+public interface MdoRepository extends JpaRepository<EmpresaManutencao, Long> {
     
 }

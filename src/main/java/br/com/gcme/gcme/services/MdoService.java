@@ -6,46 +6,46 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
-import br.com.gcme.gcme.dto.MdoRequest;
-import br.com.gcme.gcme.entity.Mdo;
-import br.com.gcme.gcme.mapper.MdoMapper;
+import br.com.gcme.gcme.dto.EmpresaManutencaoRequest;
+import br.com.gcme.gcme.entity.EmpresaManutencao;
+import br.com.gcme.gcme.mapper.EmpresaManutencaoMapper;
 import br.com.gcme.gcme.repository.MdoRepository;
 
 @Service
 public class MdoService {
 
     private final MdoRepository mdoRepository;
-    private final MdoMapper mdoMapper;
+    private final EmpresaManutencaoMapper mdoMapper;
 
 
-    public MdoService(MdoRepository mdoRepository, MdoMapper mdoMapper){
+    public MdoService(MdoRepository mdoRepository, EmpresaManutencaoMapper mdoMapper){
     this.mdoRepository = mdoRepository;
     this.mdoMapper = mdoMapper;
     }
 
     //LISTAR
-    public List<Mdo> list(){
+    public List<EmpresaManutencao> list(){
         Sort sort = Sort.by("nomeEmpresa").ascending();
         return mdoRepository.findAll(sort);
     }
     
     //CRIAR
-    public List<Mdo> create(MdoRequest mdorequest)
+    public List<EmpresaManutencao> create(EmpresaManutencaoRequest mdorequest)
     {
-        Mdo mdo = mdoMapper.toEntity(mdorequest);
+        EmpresaManutencao mdo = mdoMapper.toEntity(mdorequest);
         mdoRepository.save(mdo);
         return list();
     }
 
     //ATUALIZAR
-    public List<Mdo> update(MdoRequest mdoRequest){
-        Mdo mdo = mdoMapper.toEntity(mdoRequest);
+    public List<EmpresaManutencao> update(EmpresaManutencaoRequest mdoRequest){
+        EmpresaManutencao mdo = mdoMapper.toEntity(mdoRequest);
         mdoRepository.save(mdo);
         return list();
     }
 
     //DELETAR
-    public List<Mdo> delete(long id){
+    public List<EmpresaManutencao> delete(long id){
         mdoRepository.deleteById(id);
         return list();
     }
