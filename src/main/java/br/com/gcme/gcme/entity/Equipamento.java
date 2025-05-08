@@ -13,45 +13,45 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "EQUIPAMENTOS")
+@Table(name = "equipamentos")
 public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
-    private Long codigo_equip;
-    private String nome_equip;
-    private String marca_equip;
+    private Long codigoEquip;
+    private String nomeEquip;
+    private String marcaEquip;
     private String descricao;
-    private String range_tipo;
+    private String rangeTipo;
     private String imagem;
-    private String numero_serie;
+    private String numeroSerie;
     private String modelo;
     private LocalDateTime tempo_manutencao;
     private LocalDateTime tempo;
 
     @ManyToOne
     @JoinColumn(name = "mdo_manutencao_id")
-    private Mdo empresa;
+    private EmpresaManutencao empresaManutencao;
     
     public Equipamento(){
         
     }
     
-    public Equipamento(long id, long codigo_equip, String nome_equip, String marca_equip, String descricao,
-            String range_tipo, String imagem, String numero_serie, String modelo, LocalDateTime tempo_manutencao,
-            Mdo empresa) {
+    public Equipamento(long id, long codigoEquip, String nomeEquip, String marcaEquip, String descricao,
+            String rangeTipo, String imagem, String numeroSerie, String modelo, LocalDateTime tempo_manutencao,
+            EmpresaManutencao empresaManutencao) {
         this.id = id;
-        this.codigo_equip = codigo_equip;
-        this.nome_equip = nome_equip;
-        this.marca_equip = marca_equip;
+        this.codigoEquip = codigoEquip;
+        this.nomeEquip = nomeEquip;
+        this.marcaEquip = marcaEquip;
         this.descricao = descricao;
-        this.range_tipo = range_tipo;
+        this.rangeTipo = rangeTipo;
         this.imagem = imagem;
-        this.numero_serie = numero_serie;
+        this.numeroSerie = numeroSerie;
         this.modelo = modelo;
         this.tempo_manutencao = tempo_manutencao;
-        this.empresa = empresa;
+        this.empresaManutencao = empresaManutencao;
     }
     
     
@@ -60,8 +60,8 @@ public class Equipamento {
         this.id = id;
     }
 
-    public void setCodigo_equip(Long codigo_equip) {
-        this.codigo_equip = codigo_equip;
+    public void setCodigo_equip(Long codigoEquip) {
+        this.codigoEquip = codigoEquip;
     }
 
     public LocalDateTime getTempo() {
@@ -80,24 +80,24 @@ public class Equipamento {
     }
 
     public long getCodigo_equip() {
-        return codigo_equip;
+        return codigoEquip;
     }
-    public void setCodigo_equip(long codigo_equip) {
-        this.codigo_equip = codigo_equip;
+    public void setCodigo_equip(long codigoEquip) {
+        this.codigoEquip = codigoEquip;
     }
 
-    public String getNome_equip() {
-        return nome_equip;
+    public String getNomeEquip() {
+        return nomeEquip;
     }
-    public void setNome_equip(String nome_equip) {
-        this.nome_equip = nome_equip;
+    public void setNomeEquip(String nomeEquip) {
+        this.nomeEquip = nomeEquip;
     }
 
     public String getMarca_equip() {
-        return marca_equip;
+        return marcaEquip;
     }
-    public void setMarca_equip(String marca_equip) {
-        this.marca_equip = marca_equip;
+    public void setMarca_equip(String marcaEquip) {
+        this.marcaEquip = marcaEquip;
     }
 
     public String getDescricao() {
@@ -108,10 +108,10 @@ public class Equipamento {
     }
 
     public String getRange_tipo() {
-        return range_tipo;
+        return rangeTipo;
     }
-    public void setRange_tipo(String range_tipo) {
-        this.range_tipo = range_tipo;
+    public void setRange_tipo(String rangeTipo) {
+        this.rangeTipo = rangeTipo;
     }
 
     public String getImagem() {
@@ -122,10 +122,10 @@ public class Equipamento {
     }
 
     public String getNumero_serie() {
-        return numero_serie;
+        return numeroSerie;
     }
-    public void setNumero_serie(String numero_serie) {
-        this.numero_serie = numero_serie;
+    public void setNumero_serie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
     }
 
     public String getModelo() {
@@ -146,10 +146,10 @@ public class Equipamento {
         this.tempo_manutencao = tempo_manutencao;
     }
 
-    public Mdo getEmpresa() {
-        return empresa;
+    public EmpresaManutencao getEmpresa() {
+        return empresaManutencao;
     }
-    public void setEmpresa(Mdo empresa) {
-        this.empresa = empresa;
+    public void setEmpresa(EmpresaManutencao empresaManutencao) {
+        this.empresaManutencao = empresaManutencao;
     }
 }

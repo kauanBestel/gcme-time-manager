@@ -6,4 +6,5 @@ import br.com.gcme.gcme.entity.Equipamento;
 
 public interface EquipamentoRepository extends JpaRepository<Equipamento, Long> {
     
+    Equipamento findByNomeEquip(String nomeEquip);
 }

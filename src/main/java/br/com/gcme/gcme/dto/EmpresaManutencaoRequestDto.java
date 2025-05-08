@@ -1,6 +1,6 @@
 package br.com.gcme.gcme.dto;
 
-public class MdoRequest {
+public class EmpresaManutencaoRequestDto {
     
     private String nomeEmpresa;
     private String contatoNumero;
