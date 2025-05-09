@@ -1,26 +1,22 @@
 package br.com.gcme.gcme.mapper;
 
-import java.util.List;
-
+import br.com.gcme.gcme.dto.EquipamentoRequestDto;
+import br.com.gcme.gcme.entity.EmpresaManutencao;
+import br.com.gcme.gcme.entity.Equipamento;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.Mappings;
 
-import br.com.gcme.gcme.dto.EquipamentoRequest;
-import br.com.gcme.gcme.dto.EquipamentoResponse;
-import br.com.gcme.gcme.entity.Equipamento;
-
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper(componentModel = "spring")
 public interface EquipamentoMapper {
 
-    Equipamento toEntity(EquipamentoRequest equipamentoRequest);
+   @Mapping(target = "empresaManutencao", source = "empresaManutencaoId")
+    Equipamento toEntity(EquipamentoRequestDto dto);
 
-    @Mappings({
-        @Mapping(source = "empresa.id", target = "empresaId"),
-        @Mapping(source = "empresa.nomeEmpresa", target = "nomeEmpresa")
-    })
-    EquipamentoResponse toResponse(Equipamento equipamento);
+    default EmpresaManutencao fromId(Long id){
+        if(id == null){
+            return null;
+        }
+        return new EmpresaManutencao();
+    }
 
-    List<EquipamentoResponse> toResponseList(List<Equipamento> equipamentoList);
 }

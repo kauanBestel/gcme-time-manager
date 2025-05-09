@@ -1,7 +1,10 @@
 package br.com.gcme.gcme.controller;
 
+import java.net.http.HttpResponse.ResponseInfo;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.gcme.gcme.dto.EquipamentoRequest;
+import br.com.gcme.gcme.dto.EquipamentoRequestDto;
+import br.com.gcme.gcme.dto.EquipamentoResponseDto;
 import br.com.gcme.gcme.entity.Equipamento;
 import br.com.gcme.gcme.services.EquipamentoService;
+import jakarta.xml.bind.annotation.W3CDomHandler;
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
@@ -29,23 +34,26 @@ public EquipamentoController(EquipamentoService equipamentoService){
 
     @GetMapping
     List<Equipamento> list(){
-        return equipamentoService.list();
+        return equipamentoService.getAll();
     }
 
     @PostMapping
-    List<Equipamento> create(@RequestBody EquipamentoRequest equipamentoRequest) {
-        return equipamentoService.create(equipamentoRequest);
+    public ResponseEntity<Equipamento> criar(@RequestBody EquipamentoRequestDto dto) {
+        Equipamento novoEquipamento = equipamentoService.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoEquipamento);
     }
 
     @PutMapping
-    List<Equipamento> update(@RequestBody EquipamentoRequest equipamentoeRequest)
+    public ResponseEntity<Equipamento> update(@RequestBody Equipamento equipamento)
     {
-        return equipamentoService.update(equipamentoeRequest);
+        Equipamento atualizado = equipamentoService.update(equipamento);
+        return ResponseEntity.ok(atualizado);
     }
 
     @DeleteMapping("{id}")
-    List<Equipamento> delete(@PathVariable Long id){
-        return equipamentoService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        equipamentoService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

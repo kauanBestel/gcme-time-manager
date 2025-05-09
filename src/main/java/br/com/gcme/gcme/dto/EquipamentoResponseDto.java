@@ -2,7 +2,7 @@ package br.com.gcme.gcme.dto;
 
 import java.time.LocalDateTime;
 
-public class EquipamentoResponse {
+public class EquipamentoResponseDto {
     
     private Long id;
     private Long codigo_equip;

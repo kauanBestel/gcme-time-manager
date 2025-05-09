@@ -1,6 +1,6 @@
 package br.com.gcme.gcme.dto;
 
-public class MdoResponse {
+public class EmpresaManutencaoResponseDto {
     
     private Long Id;
     private String nomeEmpresa;
