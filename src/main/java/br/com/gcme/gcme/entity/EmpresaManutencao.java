@@ -20,9 +20,9 @@ public class EmpresaManutencao {
     private String contatoEmail;
     private String observacao;
  
+    public EmpresaManutencao(){}
+    public EmpresaManutencao(Long id) { this.id = id; }
 
-    public EmpresaManutencao(){
-    }
 
     public EmpresaManutencao(Long id, String nomeEmpresa, String contatoNumero, String contatoEmail, String observacao)
     {

@@ -1,35 +1,39 @@
 package br.com.gcme.gcme.dto;
 
+import java.time.LocalDateTime;
+
 public class EquipamentoRequestDto {
-    
-    private Long codigo_equip;
-    private String nome_equip;
-    private String marca_equip;
-    private String descricao;
-    private String range_tipo;
-    private String imagem;
-    private String numero_serie;
-    private String modelo;
 
-    private Long empresaId; //adicionei para enviarmos qual empresa ele pertence
+    public Long codigoEquip;
+    public String nomeEquip;
+    public String marcaEquip;
+    public String descricao;
+    public String rangeTipo;
+    public String imagem;
+    public String numeroSerie;
+    public String modelo;
+    public LocalDateTime tempoManutencao;
+    public LocalDateTime tempo;
 
-    public Long getCodigo_equip() {
-        return codigo_equip;
+    public Long empresaManutencaoId; //o id da empresa de manutenção vai aqui
+
+    public Long getCodigoEquip() {
+        return codigoEquip;
     }
-    public void setCodigo_equip(Long codigo_equip) {
-        this.codigo_equip = codigo_equip;
+    public void setCodigoEquip(Long codigoEquip) {
+        this.codigoEquip = codigoEquip;
     }
-    public String getNome_equip() {
-        return nome_equip;
+    public String getNomeEquip() {
+        return nomeEquip;
     }
-    public void setNome_equip(String nome_equip) {
-        this.nome_equip = nome_equip;
+    public void setNomeEquip(String nomeEquip) {
+        this.nomeEquip = nomeEquip;
     }
-    public String getMarca_equip() {
-        return marca_equip;
+    public String getMarcaEquip() {
+        return marcaEquip;
     }
-    public void setMarca_equip(String marca_equip) {
-        this.marca_equip = marca_equip;
+    public void setMarcaEquip(String marcaEquip) {
+        this.marcaEquip = marcaEquip;
     }
     public String getDescricao() {
         return descricao;
@@ -37,11 +41,11 @@ public class EquipamentoRequestDto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public String getRange_tipo() {
-        return range_tipo;
+    public String getRangeTipo() {
+        return rangeTipo;
     }
-    public void setRange_tipo(String range_tipo) {
-        this.range_tipo = range_tipo;
+    public void setRangeTipo(String rangeTipo) {
+        this.rangeTipo = rangeTipo;
     }
     public String getImagem() {
         return imagem;
@@ -49,11 +53,11 @@ public class EquipamentoRequestDto {
     public void setImagem(String imagem) {
         this.imagem = imagem;
     }
-    public String getNumero_serie() {
-        return numero_serie;
+    public String getNumeroSerie() {
+        return numeroSerie;
     }
-    public void setNumero_serie(String numero_serie) {
-        this.numero_serie = numero_serie;
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
     }
     public String getModelo() {
         return modelo;
@@ -61,12 +65,23 @@ public class EquipamentoRequestDto {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public Long getEmpresaId() {
-        return empresaId;
+    public LocalDateTime getTempo_manutencao() {
+        return tempoManutencao;
     }
-    public void setEmpresaId(Long empresaId) {
-        this.empresaId = empresaId;
+    public void setTempo_manutencao(LocalDateTime tempoManutencao) {
+        this.tempoManutencao = tempoManutencao;
     }
-
+    public LocalDateTime getTempo() {
+        return tempo;
+    }
+    public void setTempo(LocalDateTime tempo) {
+        this.tempo = tempo;
+    }
+    public Long getEmpresaManutencaoId() {
+        return empresaManutencaoId;
+    }
+    public void setEmpresaManutencaoId(Long empresaManutencaoId) {
+        this.empresaManutencaoId = empresaManutencaoId;
+    }
 
 }

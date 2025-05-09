@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gcme.gcme.entity.EmpresaManutencao;
 import br.com.gcme.gcme.services.EmpresaManutencaoService;
-import io.micrometer.core.ipc.http.HttpSender.Response;
 
 
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
-@RequestMapping("/mao-de-obra")
+@RequestMapping("/empresa-de-manutencao")
 public class EmpresaManutencaoController {
     
 private EmpresaManutencaoService empresaManutencaoService;

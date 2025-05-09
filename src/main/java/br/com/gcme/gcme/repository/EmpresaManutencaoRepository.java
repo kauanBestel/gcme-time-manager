@@ -7,5 +7,4 @@ import br.com.gcme.gcme.entity.EmpresaManutencao;
 
 public interface EmpresaManutencaoRepository extends JpaRepository<EmpresaManutencao, Long> {
  
-    EmpresaManutencao findByNomeEmpresa(String nomeEmpresa);
 }

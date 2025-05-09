@@ -3,6 +3,7 @@ package br.com.gcme.gcme.controller;
 import java.net.http.HttpResponse.ResponseInfo;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.gcme.gcme.dto.EquipamentoRequestDto;
+import br.com.gcme.gcme.dto.EquipamentoResponseDto;
 import br.com.gcme.gcme.entity.Equipamento;
 import br.com.gcme.gcme.services.EquipamentoService;
-import io.micrometer.core.ipc.http.HttpSender.Response;
+import jakarta.xml.bind.annotation.W3CDomHandler;
 
 @CrossOrigin(originPatterns = "http://localhost:3000")
 @RestController
@@ -35,9 +38,9 @@ public EquipamentoController(EquipamentoService equipamentoService){
     }
 
     @PostMapping
-    public ResponseEntity<Equipamento> create(@RequestBody Equipamento equipamento) {
-        Equipamento criado = equipamentoService.create(equipamento);
-        return ResponseEntity.status(201).body(criado);
+    public ResponseEntity<Equipamento> criar(@RequestBody EquipamentoRequestDto dto) {
+        Equipamento novoEquipamento = equipamentoService.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoEquipamento);
     }
 
     @PutMapping

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,13 +31,11 @@ public class Equipamento {
     private LocalDateTime tempo_manutencao;
     private LocalDateTime tempo;
 
-    @ManyToOne
-    @JoinColumn(name = "mdo_manutencao_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_manutencao_id")
     private EmpresaManutencao empresaManutencao;
     
-    public Equipamento(){
-        
-    }
+    public Equipamento(){}
     
     public Equipamento(long id, long codigoEquip, String nomeEquip, String marcaEquip, String descricao,
             String rangeTipo, String imagem, String numeroSerie, String modelo, LocalDateTime tempo_manutencao,
@@ -146,10 +145,10 @@ public class Equipamento {
         this.tempo_manutencao = tempo_manutencao;
     }
 
-    public EmpresaManutencao getEmpresa() {
+    public EmpresaManutencao getEmpresaManutencao() {
         return empresaManutencao;
     }
-    public void setEmpresa(EmpresaManutencao empresaManutencao) {
+    public void setEmpresaManutencao(EmpresaManutencao empresaManutencao) {
         this.empresaManutencao = empresaManutencao;
     }
 }
