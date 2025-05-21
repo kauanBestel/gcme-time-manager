@@ -1,0 +1,117 @@
+{
+  "info": {
+    "_postman_id": "c08d06fa-3c66-4b7d-979f-001b2a8d1234",
+    "name": "MVP API - Empresa e Equipamento",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Empresa",
+      "item": [
+        {
+          "name": "Criar Empresa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nomeEmpresa\": \"Salmix\",\n  \"descricaoEmpresa\": \"Empresa de manutenção\",\n  \"equipamento\": [\n    {\n      \"nomeEquip\": \"Gerador\",\n      \"descricaoEquip\": \"Diesel 10kVA\"\n    },\n    {\n      \"nomeEquip\": \"Compressor\",\n      \"descricaoEquip\": \"Ar industrial\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/empresa",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["empresa"]
+            }
+          }
+        },
+        {
+          "name": "Listar Empresas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/empresa",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["empresa"]
+            }
+          }
+        },
+        {
+          "name": "Excluir Empresa por ID",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/empresa/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["empresa", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Equipamento",
+      "item": [
+        {
+          "name": "Criar Equipamento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nomeEquip\": \"Gerador\",\n  \"descricaoEquip\": \"Diesel 10kVA\",\n  \"empresa\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/equipamento",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["equipamento"]
+            }
+          }
+        },
+        {
+          "name": "Listar Equipamentos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/equipamento",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["equipamento"]
+            }
+          }
+        },
+        {
+          "name": "Excluir Equipamento por ID",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/equipamento/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["equipamento", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
