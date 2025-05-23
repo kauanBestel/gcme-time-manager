@@ -23,5 +23,6 @@ public class EquipamentoModel {
     private String descricaoEquip;
     private LocalDate dataManutencao;
     private LocalDate proximaManutencao;
+    private String imagemPath;
 }
 

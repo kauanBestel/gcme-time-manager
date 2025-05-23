@@ -1,13 +1,21 @@
 package com.gcme.mvp.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
 
 import com.gcme.mvp.repository.EquipamentoRepository;
 
+import ch.qos.logback.core.util.StringUtil;
+import io.micrometer.common.util.StringUtils;
 import jakarta.transaction.Transactional;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 
 import com.gcme.mvp.dto.EquipamentoRequestDto;
 import com.gcme.mvp.model.EquipamentoModel;
@@ -16,6 +24,11 @@ import com.gcme.mvp.model.EquipamentoModel;
 @Service
 public class EquipamentoService {
     private final EquipamentoRepository equipamentoRep;
+    private final Path uploadDir = Paths.get("uploads");
+
+
+
+
 
     public EquipamentoService(EquipamentoRepository equipamento){
         this.equipamentoRep = equipamento;
@@ -47,5 +60,23 @@ public class EquipamentoService {
             equipamentoRep.deleteById(id);
         }
          return equipamento;
+    }
+
+    public String salvarImagem(MultipartFile file) throws IOException{
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
+        if(fileName.contains("..")){
+              throw new RuntimeException("Erro ao armazenar arquivo");
+        }
+
+        if (!Files.exists(uploadDir)) {
+            Files.createDirectories(uploadDir);
+        }
+
+        Path targetLocation = uploadDir.resolve(fileName);
+        file.transferTo(targetLocation.toFile());
+
+        return "/uploads" + fileName;
     }
 }
