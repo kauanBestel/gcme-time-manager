@@ -11,8 +11,6 @@ import org.springframework.util.StringUtils;
 
 import com.gcme.mvp.repository.EquipamentoRepository;
 
-import ch.qos.logback.core.util.StringUtil;
-import io.micrometer.common.util.StringUtils;
 import jakarta.transaction.Transactional;
 import java.nio.file.Paths;
 import java.nio.file.Path;
@@ -26,10 +24,6 @@ public class EquipamentoService {
     private final EquipamentoRepository equipamentoRep;
     private final Path uploadDir = Paths.get("uploads");
 
-
-
-
-
     public EquipamentoService(EquipamentoRepository equipamento){
         this.equipamentoRep = equipamento;
     }
@@ -37,6 +31,10 @@ public class EquipamentoService {
     public List<EquipamentoModel> getAllEquipamentos(){
         Sort sort = Sort.by("nomeEquip");
         return equipamentoRep.findAll(sort);
+    }
+
+    public EquipamentoModel getById(long id){
+        return equipamentoRep.findById(id).orElse(null);
     }
 
     @Transactional

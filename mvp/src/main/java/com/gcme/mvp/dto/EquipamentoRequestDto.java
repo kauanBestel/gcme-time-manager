@@ -6,6 +6,11 @@ public record EquipamentoRequestDto(
     String nomeEquip,
     String descricaoEquip,
     LocalDate dataManutencao,
-    LocalDate proximaManutencao
+    LocalDate proximaManutencao,
+    int codigoEquip, 
+    String marcaEquip,
+    float rangeTipo,
+    String numeroSerie,
+    String modelo
 ){}
 

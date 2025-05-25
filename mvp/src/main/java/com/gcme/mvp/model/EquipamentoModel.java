@@ -23,6 +23,13 @@ public class EquipamentoModel {
     private String descricaoEquip;
     private LocalDate dataManutencao;
     private LocalDate proximaManutencao;
-    private String imagemPath;
+    
+    private int codigoEquip; 
+    private String marcaEquip;
+    private float rangeTipo;
+    private String numeroSerie;
+    private String modelo;
+    
+    //private String caminhoImagem;
 }
 

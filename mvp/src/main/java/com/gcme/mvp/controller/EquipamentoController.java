@@ -24,7 +24,7 @@ import com.gcme.mvp.service.EquipamentoService;
 @RequestMapping("/equipamento")
 public class EquipamentoController {
     private final EquipamentoService equipService;
-    
+   
     public EquipamentoController(EquipamentoService equipService){
         this.equipService = equipService;
     }
@@ -33,6 +33,12 @@ public class EquipamentoController {
     public List<EquipamentoModel> getAll(){
         return equipService.getAllEquipamentos();
     }
+
+    @GetMapping("/{id}")
+    public EquipamentoModel getById(@PathVariable long id){
+        return equipService.getById(id);
+    }
+    
 
     @PostMapping
     public ResponseEntity<EquipamentoModel> create(@RequestBody EquipamentoRequestDto equipDto){
@@ -45,11 +51,10 @@ public class EquipamentoController {
             String caminho = equipService.salvarImagem(file);
             return ResponseEntity.ok(caminho);
         }catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body("Erro ao salvar imagem: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar imagem: " + e.getMessage());
         }
     }
-    
+
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
