@@ -2,10 +2,14 @@ package com.gcme.mvp.model;
 
 import java.time.LocalDate;
 
+import com.gcme.mvp.model.imagens.DadosImagemEquip;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +33,11 @@ public class EquipamentoModel {
     private float rangeTipo;
     private String numeroSerie;
     private String modelo;
+
+    @OneToOne
+    @JoinColumn(name = "imagem_id")
+    private DadosImagemEquip imagem;
+
     
     //private String caminhoImagem;
 }
