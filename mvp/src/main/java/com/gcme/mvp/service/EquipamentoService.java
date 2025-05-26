@@ -8,15 +8,12 @@ import java.util.Optional;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.util.StringUtils;
 
 import com.gcme.mvp.repository.EquipamentoRepository;
 import com.gcme.mvp.repository.ImagemRepository;
 import com.gcme.mvp.util.ImageUtils;
 
 import jakarta.transaction.Transactional;
-import java.nio.file.Paths;
-import java.nio.file.Path;
 
 import com.gcme.mvp.dto.EquipamentoRequestDto;
 import com.gcme.mvp.model.EquipamentoModel;
@@ -28,7 +25,6 @@ public class EquipamentoService {
     private final EquipamentoRepository equipamentoRep;
     private final ImagemRepository imagemRep;
 
-    private final Path uploadDir = Paths.get("uploads");
 
     public EquipamentoService(EquipamentoRepository equipamento, ImagemRepository imagem){
         this.equipamentoRep = equipamento;
@@ -48,23 +44,22 @@ public class EquipamentoService {
     public EquipamentoModel create(EquipamentoRequestDto equipamentoDto, MultipartFile file)
      throws IOException{
         EquipamentoModel equip = new EquipamentoModel();
-        equip.setNomeEquip(equipamentoDto.nomeEquip());
-        equip.setDescricaoEquip(equipamentoDto.descricaoEquip());
-        equip.setDataManutencao(equipamentoDto.dataManutencao());
-        equip.setProximaManutencao(equipamentoDto.proximaManutencao());
-        equip.setCodigoEquip(equipamentoDto.codigoEquip());
-        equip.setMarcaEquip(equipamentoDto.marcaEquip());
-        equip.setRangeTipo(equipamentoDto.rangeTipo());
-        equip.setNumeroSerie(equipamentoDto.numeroSerie());
-        equip.setModelo(equipamentoDto.modelo());
+        equip.setNomeEquip(equipamentoDto.getNomeEquip());
+        equip.setDescricaoEquip(equipamentoDto.getDescricaoEquip());
+        equip.setDataManutencao(equipamentoDto.getDataManutencao());
+        equip.setProximaManutencao(equipamentoDto.getProximaManutencao());
+        equip.setCodigoEquip(equipamentoDto.getCodigoEquip());
+        equip.setMarcaEquip(equipamentoDto.getMarcaEquip());
+        equip.setRangeTipo(equipamentoDto.getRangeTipo());
+        equip.setNumeroSerie(equipamentoDto.getNumeroSerie());
+        equip.setModelo(equipamentoDto.getModelo());
 
         DadosImagemEquip dadosImg = imagemRep.save(
         DadosImagemEquip.builder()
             .nome(file.getOriginalFilename())
             .tipo(file.getContentType())
             .dadosImagem(ImageUtils.compressImage(file.getBytes()))
-            .build()
-        );
+            .build());
 
         equip.setImagem(dadosImg);
 

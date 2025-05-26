@@ -21,7 +21,7 @@ import lombok.Setter;
 public class EquipamentoModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeEquip;
     private String descricaoEquip;
