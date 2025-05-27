@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.gcme.mvp.dto.EquipamentoRequestDto;
+import com.gcme.mvp.dto.ImagemRequestDto;
 import com.gcme.mvp.model.EquipamentoModel;
 import com.gcme.mvp.service.EquipamentoService;
 
@@ -51,6 +52,7 @@ public class EquipamentoController {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         EquipamentoRequestDto equipDto = mapper.readValue(equipamentoJson,EquipamentoRequestDto.class);
+        ImagemRequestDto imagemDto = mapper.readTree(imagem ImagemRequestDto.class)
 
         EquipamentoModel equipamento = equipService.create(equipDto, imagem);
 
